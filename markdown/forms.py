@@ -17,9 +17,9 @@ class AdminMarkdownField(forms.CharField):
     widget = AdminMarkdownWidget
 
 
-try:
-    from south.modelsinspector import add_introspection_rules
-    add_introspection_rules([], ["^pagedown\.forms\.MarkdownField"])
-    add_introspection_rules([], ["^pagedown\.forms\.AdminMarkdownField"])
-except ImportError:
-    raise
+# try:
+#     from south.modelsinspector import add_introspection_rules
+#     add_introspection_rules([], ["^markdown\.forms\.MarkdownField"])
+#     add_introspection_rules([], ["^markdown\.forms\.AdminMarkdownField"])
+# except ImportError:
+#     raise
