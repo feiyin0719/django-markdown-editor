@@ -103,6 +103,7 @@ class MarkdownWidget(forms.Textarea):
             "id": final_attrs["id"],
             "marklib":self.lib,
             "markdownconf":markdown_conf,
+            "media":self.media,
         }
         context = Context(context) if VERSION < (1, 9) else context
         return template.render(context)
