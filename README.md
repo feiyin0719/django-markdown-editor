@@ -4,7 +4,7 @@
 The markdown editor widget for Django,you can use it in admin fields and forms,it is based on editor.md js plugins.
 
 
-![](http://github.com/feiyin0719/django-markdown-editor/blob/master/markdown.png)
+![](https://raw.githubusercontent.com/feiyin0719/django-markdown-editor/master/markdown.png)
 
 ## how to use
 1.git clone https://github.com/feiyin0719/django-markdown-editor.git
