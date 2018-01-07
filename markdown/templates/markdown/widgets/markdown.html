@@ -1,0 +1,34 @@
+<div class="wmd-wrapper" id="{{ id }}-wmd-wrapper">
+    <textarea {{ attrs|safe }}>{{ body }}</textarea>
+</div>
+<script type="text/javascript">
+			var markdownEditor;
+
+            $(function() {
+                markdownEditor = editormd("{{ id }}-wmd-wrapper", {
+                    width   : "{{markdownconf.width}}",
+                    height  : "{{markdownconf.height}}",
+                    theme :"{{markdownconf.theme}}",
+                    previewTheme : "{{markdownconf.previewTheme}}",
+                    editorTheme : "{{markdownconf.editorTheme}}",
+
+                    syncScrolling : "{{markdownconf.syncScrolling}}",
+                    saveHTMLToTextarea :  {{markdownconf.saveHTMLToTextarea|lower}},
+
+                    emoji: {{markdownconf.emoji|lower}},
+                    taskList: {{markdownconf.taskList|lower}},
+                    tocm: {{markdownconf.tocm|lower}},
+                    tex: {{markdownconf.tex|lower}},
+
+                    flowChart: {{markdownconf.flowChart|lower}},
+                    sequenceDiagram: {{markdownconf.sequenceDiagram|lower}},
+                    codeFold: {{markdownconf.codeFold|lower}},
+                    path    : "{{marklib}}",
+                    {%if markdownconf.imageUpload%}
+					imageUpload : {{markdownconf.imageUpload|lower}},
+					imageFormats :{{markdownconf.imageFormats|safe}},
+					imageUploadURL : "{{markdownconf.imageUploadURL|safe}}",
+					{%endif%}
+                });
+            });
+</script>
