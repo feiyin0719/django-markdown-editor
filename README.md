@@ -8,7 +8,9 @@ The markdown editor widget for Django,you can use it in admin fields and forms,i
 
 ## how to use
 1.git clone https://github.com/feiyin0719/django-markdown-editor.git
+
 2.copy markdown folder to your project
+
 3.add markdown in your project settings.py, such as
 ```python
 
