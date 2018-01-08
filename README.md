@@ -32,7 +32,7 @@ class TestAdmin(admin.ModelAdmin):
     }
 admin.site.register(Test,TestAdmin)
 ```
-if you use xadmin,please use AdminMarkdownWidget,such as:
+if you use xadmin,please use XAdminMarkdownWidget,such as:
 ```python
 class TestAdmin(admin.ModelAdmin):
     formfield_overrides = {
