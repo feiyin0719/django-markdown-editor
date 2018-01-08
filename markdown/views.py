@@ -23,14 +23,14 @@ def upload_image(request):
             return HttpResponse(json.dumps({'success': 0, 'message': 'upload image failed'}, ensure_ascii=False),
                                 content_type="application/json")
         now_time=str(int(time.time()*1000))
-        file_name = file_name.replace('(', '{').replace(')', '}')
+        file_name = file_name.replace('(', '[').replace(')', ']')
         image_floder=os.path.join(media_root,markdown_settings.MARKDOWN_IMAGE_FLODER)
         if not os.path.exists(image_floder):
             os.makedirs(image_floder)
         image_name=file_name+"_"+now_time+"."+suffix
         count=1
         while os.path.exists(os.path.join(image_floder,image_name)):
-            image_name = file_name + "_" + now_time + "("+str(count)+")." + suffix
+            image_name = file_name + "_" + now_time + "["+str(count)+"]." + suffix
             count+=1
         destination = open(os.path.join(image_floder, image_name), 'wb+')  # 打开特定的文件进行二进制的写操作
         for chunk in myFile.chunks():  # 分块写入文件
