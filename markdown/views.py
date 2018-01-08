@@ -23,6 +23,7 @@ def upload_image(request):
             return HttpResponse(json.dumps({'success': 0, 'message': 'upload image failed'}, ensure_ascii=False),
                                 content_type="application/json")
         now_time=str(int(time.time()*1000))
+        file_name = file_name.replace('(', '{').replace(')', '}')
         image_floder=os.path.join(media_root,markdown_settings.MARKDOWN_IMAGE_FLODER)
         if not os.path.exists(image_floder):
             os.makedirs(image_floder)
