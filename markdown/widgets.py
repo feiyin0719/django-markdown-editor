@@ -48,7 +48,7 @@ class MarkdownWidget(forms.Textarea):
         super(MarkdownWidget, self).__init__(*args, **kwargs)
 
     def _media(self):
-        return super(MarkdownWidget, self).media + forms.Media(
+        return forms.Media(
             css={
                 "all": (compatible_staticpath("markdown/css/editormd.css"),)
             },
@@ -103,12 +103,22 @@ class MarkdownWidget(forms.Textarea):
             "id": final_attrs["id"],
             "marklib":self.lib,
             "markdownconf":markdown_conf,
-            "media":self.media,
         }
         context = Context(context) if VERSION < (1, 9) else context
         return template.render(context)
 
-
 class AdminMarkdownWidget(MarkdownWidget, admin_widgets.AdminTextareaWidget):
     def __init__(self, *args, **kwargs):
         super(AdminMarkdownWidget, self).__init__(*args, **kwargs)
+class XAdminMarkdownWidget(AdminMarkdownWidget):
+    def __init__(self, *args, **kwargs):
+        super(XAdminMarkdownWidget, self).__init__(*args, **kwargs)
+    def _media(self):
+        return  forms.Media(
+            css={
+                "all": (compatible_staticpath("markdown/css/editormd.css"),)
+            },
+            js=(
+                compatible_staticpath("markdown/js/editormd.min.js"),
+            ))
+    media = property(_media)

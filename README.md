@@ -32,6 +32,14 @@ class TestAdmin(admin.ModelAdmin):
     }
 admin.site.register(Test,TestAdmin)
 ```
+if you use xadmin,please use AdminMarkdownWidget,such as:
+```python
+class TestAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.TextField: {'widget': XAdminMarkdownWidget()},
+    }
+xadmin.site.register(Test,TestAdmin)
+```
 5.use in forms
 
 ```python
@@ -44,6 +52,20 @@ class BlogForm(forms.Form):
     name = forms.CharField()
     url = forms.URLField()
     context = MarkdownField()
+```
+then in in templates,please add {{form.media}} in <head></head> to import js/css
+```html
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Hello Django!</title>
+    {{form.media}}
+</head>
+<body>
+{{form}}
+</body>
+</html>
 ```
 6.how to upload image
 include url in urls.py such as
